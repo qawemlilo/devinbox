@@ -19,7 +19,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var expressValidator = require('express-validator');
-var connectAssets = require('connect-assets');
+//var connectAssets = require('connect-assets');
 
 /**
  * Controllers (route handlers).
