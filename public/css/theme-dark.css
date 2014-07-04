@@ -1,0 +1,197 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Default
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Turquoise Color : #1abc9c for branding
+ * Midnight Blue Color : #3a3937 for text
+ * Wet Asphalt Color : #34495e for headings
+ 
+ * Just  replace the coresponding theme values to your own theme color
+   Turquoise Color :[	body{border-top} 
+						#logo a{background} 
+						#features i{color} 
+						.social-icons a {color}
+				     ]
+*/
+
+/*
+ * For Headings and text Google font 'Lato'
+ */
+body{
+	background: #393c41;
+	padding-top: 5px;
+	color: #86878c;
+	font-family: 'Lato', sans-serif;
+	font-weight : 400;
+	border-top-style: solid;
+	border-top-width: 5px;
+}
+h1,h2,h3,h4,h5,h6{
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+}
+/* 
+ * Header
+ * Note: Below Pacifico font is only for theme demo purpose
+*/
+#logo{
+	text-align: center;
+}
+#logo a{
+	color: #fff;
+	padding: 45px 20px;
+	font-family: 'Pacifico', cursive;
+	font-size: 32px;
+	font-weight: 400;
+	text-decoration: none;		
+	display: inline-block;
+	margin: 30px 0;
+	text-shadow: 1px 2px rgba(0,0,0,0.3);
+	-webkit-border-radius: 50% 50%;
+ 	-moz-border-radius: 50% 50%;
+	-ms-border-radius: 50% 50%;
+	-o-border-radius: 50% 50%;
+	border-radius: 50% 50%;
+}
+
+/* 
+ * Marketing
+ */
+#marketing-text{
+	text-align: center;
+	
+}
+#marketing-text.alter{
+	margin-bottom: 30px;
+}
+#marketing-text h1{
+	font-size: 32px;
+	margin-bottom:20px;
+}
+#marketing-text p{
+	font-size: 18px;
+	line-height: 24px;
+	padding:0 10px;
+}
+
+/* 
+ * Subscribe
+ */
+#subscribe{
+	margin: 20px 0;
+}
+#subscribe .btn-block{
+	margin-top: 10px;
+}
+.panel-theme{
+	border:0;
+	border-radius: 6px;
+
+}
+.panel-theme .panel-heading{ 
+	background: #2a2f32;
+	color: #fff;
+	font-size: 20px;
+	font-weight: 700;
+	padding: 20px 0;
+	border: 0;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	
+}
+.panel-theme .panel-body{
+	padding: 20px 40px 10px;
+	text-align: center;
+}
+/*
+ * Features
+ */
+ 
+#features{
+	overflow: hidden;
+	margin: 20px 0;
+}
+#features i{
+	font-size: 48px;
+}
+#features h2{
+	font-size: 18px;
+	line-height: 24px;
+}
+.feature-box{
+	padding: 15px;
+	text-align: center;
+	border: solid 1px #464b4f;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	-ms-border-radius: 5px;	
+	margin-bottom: 20px;
+}
+#features .media{
+	margin-bottom: 20px;
+}
+#features .media>.pull-left{
+	margin-right: 20px;
+	width: 50px;
+}
+/*
+ * Footer
+ */
+footer{
+	margin: 0 0 30px;	
+	text-align: center;
+} 
+.social-text{
+	font-size:16px;
+}
+.social-text span{
+	display: block;
+	width: 150px;
+	margin:0 auto 10px;	
+	border-top: solid 3px #2a2f32;
+}
+.social-icons{
+	margin-bottom: 20px;
+}
+.social-icons a{
+	font-size: 24px;
+	padding: 5px;
+}
+.social-icons a:hover{
+	text-decoration: none;
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+	#subscribe .btn-block{
+		margin: 0;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	#subscribe .btn-block{
+		margin: 0;
+	}
+	#features,#subscribe{
+	margin: 50px 0;
+	}	
+}
+
+@media (min-width: 1200px) {
+	#marketing-text p{
+		padding:0 50px;
+	}
+	#subscribe .btn-block{
+			margin: 0;
+	}
+	#features,#subscribe{
+	margin: 50px 0;
+	}	
+}

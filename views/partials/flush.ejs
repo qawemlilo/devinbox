@@ -1,0 +1,28 @@
+
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div id="flash">
+          <% if (messages && messages.errors) { %>
+            <div class="alert alert-danger animated fadeIn">
+              <% messages.errors.forEach(function (err) { %>
+                  <div><%= err.msg %></div>
+              <% }) %>
+            </div>
+          <% } %>
+          <% if (messages && messages.info) { %>
+            <div class="alert alert-info animated fadeIn">
+              <% messages.info.forEach(function (err) { %>
+                <div><%= err.msg %></div>
+              <% }) %>
+            </div>
+          <% } %>
+         <% if (messages && messages.success) { %> 
+            <div class="alert alert-success animated fadeIn">
+              <% messages.success.forEach(function (err) { %>
+                <div><%= err.msg %></div>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>

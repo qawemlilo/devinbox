@@ -1,0 +1,94 @@
+  
+  <% include partials/header %>
+
+  <!-- Static navbar -->
+  <% include partials/nav %>
+
+  <div class="container">
+
+    <% include partials/flush %>
+
+    <div class="row">
+      <section id="marketing-text" class="alter">
+        <div class="col-md-12 col-sm-12">
+          <h1>Share your side projects with other developers like you</h1>
+          <p>Subscribe and get feed back, thumbs up, upvotes, Github stars, and retweets</p>
+        </div><!--12-->
+      </section><!--/marketing-text-->  
+
+			<section class="clearfix">
+		    <div class="col-md-7 col-sm-12">
+          <div class="row">           	
+            <div id="features">
+              <div class="col-md-12 col-sm-12">
+                <div class="media">
+                  <div class="pull-left">
+                    <i class="icon icon-question"></i>   
+                  </div><!--pull-left-->
+                  <div class="media-body">
+                    <h4 class="media-heading">Why?</h4>
+                    <p>Writing code is the easy part, building an audience for your creations is the hard part. As developers we share the similar problems, let us help each build better products by giving feed back and support.</p>
+                  </div><!--media-body-->
+                </div><!--media-->
+              </div><!--/6-->
+                
+              <div class="col-md-12 col-sm-12">
+                <div class="media">
+                  <div class="pull-left">
+                    <i class="icon icon-wrench"></i>
+                  </div><!--pull-left-->
+                  
+                  <div class="media-body">
+                    <h4 class="media-heading">How it works</h4>
+                    <p>1) Subscribe, 2) Configure preferences, 3) and Share.</p>
+                    <p>When you receive a project in your inbox, you can do one or more of the following: 
+                    </p>
+                    <ul>
+                      <li>Reply with some helpful feed back</li>
+                      <li>Retweet it</li> 
+                      <li>Star it on github</li>
+                      <li>Give it an upvote on hackernews or related platforms</li>
+                    </li>
+                  </div><!--media-body-->
+                </div><!--media-->
+              </div><!--/3-->  
+            </div><!--features-->    
+          </div><!--row-->
+        </div><!--/8-->
+            
+        <div class="col-md-5">
+          <div class="row">
+            <div id="subscribe">
+              <div class="col-md-12 col-sm-12">                
+                <div class="panel panel-default panel-theme">
+                    <div class="panel-heading text-center">Get Connected</div>
+
+                    <div class="panel-body">
+                      <div class="row">
+                        <form role="form" action="/subscribe" method="post">
+                          <input type="hidden" name="_csrf" value="<%= _csrf %>">
+                          <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="fieldEmail" name="name" class="form-control" placeholder="Name" required />
+                          </div><!--form-group-->
+                          
+                          <div class="form-group">
+                            <label>Email Address:</label>
+                            
+                            <input type="email" id="fieldEmail" name="email" placeholder="Email Address" class="form-control" required />
+                          </div><!--form-group-->
+                          
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-theme">Subscribe</button>
+                          </div><!--form-group-->
+                        </form>
+                      </div><!--row-->
+                  </div><!--panel-body-->
+                  </div><!--panel-->
+              </div><!--/12-->
+            </div><!--subscribe-->  
+          </div><!--row-->            
+        </div><!--/4-->   
+      </section>
+
+	<% include partials/footer %>

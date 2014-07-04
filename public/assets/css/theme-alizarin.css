@@ -1,0 +1,124 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Alizarin
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Alizarin Color 				: #EA4135 for branding
+ * Alizarin Dark Color			: #bc3e31 link and button hover
+*/
+body{
+	border-color: #EA4135;
+}
+#logo a{
+	background: #EA4135;
+}
+#features i{
+	color: #EA4135;
+}
+.social-icons a{
+	color: #EA4135;
+}
+.social-icons a:hover{
+	color: #bc3e31;
+}
+.form-control:focus {
+  border-color: #EA4135;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #EA4135;
+  border-color: #EA4135;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #bc3e31;
+  border-color: #bc3e31;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #bc3e31;
+  border-color: #bc3e31;
+}
+
+/* logo */
+a.navbar-brand {
+  font-weight: 100;
+  /*margin-left: -40px;*/
+  margin-top: 10px;
+  padding: 0px 9px;
+  line-height: 21px;
+  font-size: 32px;
+  display: block;
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  font-family: 'Open Sans', Tahoma, sans-serif;
+  color: #34495E;
+}
+a.navbar-brand i {
+  float: left;
+  font-size: 35px;
+  margin-top: 0px;
+  text-align: left;
+  width: 50px;
+  color: #EA4135;
+  margin-right: 1px;
+}
+a.navbar-brand strong {
+  font-weight: 800;
+}
+a.navbar-brand span {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+}
+a.navbar-brand .handwriting {
+  float: left;
+}
+a.navbar-brand small {
+  color: #EA4135;
+  font-size: 13px;
+  height: 20px;
+  line-height: 20px;
+  font-weight: 100;
+  text-transform: none;
+  font-family: "Pacifico", Monaco, Consolas, monospace;
+}
+a.navbar-brand:hover {
+  text-decoration: none;
+}

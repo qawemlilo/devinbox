@@ -1,0 +1,76 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Belize Hole
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Belize Hole Color 			: #2980b9 for branding
+ * Belize Hole Dark Color		: #216694 link and button hover
+*/
+body{
+	border-color: #2980b9;
+}
+#logo a{
+	background: #2980b9;
+}
+#features i{
+	color: #2980b9;
+}
+.social-icons a{
+	color: #2980b9;
+}
+.social-icons a:hover{
+	color: #216694;
+}
+.form-control:focus {
+  border-color: #2980b9;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #2980b9;
+  border-color: #2980b9;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #216694;
+  border-color: #216694;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #216694;
+  border-color: #216694;
+}

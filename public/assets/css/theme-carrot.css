@@ -1,0 +1,77 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Carrot
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Carrot Color 				: #e67e22 for branding
+ * Carrot Dark Color			: #b8651b link and button hover
+*/
+body{
+	border-color: #e67e22;
+}
+#logo a{
+	background: #e67e22;
+}
+#features i{
+	color: #e67e22;
+}
+.social-icons a{
+	color: #e67e22;
+}
+.social-icons a:hover{
+	color: #b8651b;
+}
+.form-control:focus {
+  border-color: #e67e22;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #e67e22;
+  border-color: #e67e22;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #b8651b;
+  border-color: #b8651b;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #b8651b;
+  border-color: #b8651b;
+}
+

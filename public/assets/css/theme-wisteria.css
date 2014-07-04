@@ -1,0 +1,77 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Wisteria
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Wisteria Color 				: #8e44ad for branding
+ * Wisteria Dark Color			: #72368a link and button hover
+*/
+body{
+	border-color:#8e44ad;
+}
+#logo a{
+	background: #8e44ad;
+}
+#features i{
+	font-size: 48px;
+	color: #8e44ad;
+}
+.social-icons a{
+	color: #8e44ad;
+}
+.social-icons a:hover{
+	color: #72368a;
+}
+.form-control:focus {
+  border-color: #8e44ad;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #8e44ad;
+  border-color: #8e44ad;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #72368a;
+  border-color: #72368a;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #72368a;
+  border-color: #72368a;
+}

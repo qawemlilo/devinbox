@@ -1,0 +1,76 @@
+/*
+Author			:	Rajendra Prasad A
+URL				:	http://behance.net/madebyraj
+Company Name	:	DoozyPixels
+Company URL		: 	http://www.doozypixels.com
+Theme			: 	Turquoise
+*/
+
+/*
+ *** COLOR GUIDANCE ***
+ * Turquoise Color 			: #1abc9c for branding
+ * Turquoise Dark Color		: #15967d link and button hover
+*/
+body{
+	border-color: #1abc9c;
+}
+#logo a{
+	background: #1abc9c;
+}
+#features i{
+	color: #1abc9c;
+}
+.social-icons a{
+	color: #1abc9c;
+}
+.social-icons a:hover{
+	color: #15967d;
+}
+.form-control:focus {
+  border-color: #1abc9c;
+}
+
+/*
+ * Custom Theme Buttons
+ */
+.btn-theme {
+  color: #ffffff;
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+  font-weight: 700;
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #ffffff;
+  background-color: #15967d;
+  border-color: #15967d;
+}
+
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  background-image: none;
+}
+
+.btn-theme.disabled,
+.btn-theme[disabled],
+fieldset[disabled] .btn-theme,
+.btn-theme.disabled:hover,
+.btn-theme[disabled]:hover,
+fieldset[disabled] .btn-theme:hover,
+.btn-theme.disabled:focus,
+.btn-theme[disabled]:focus,
+fieldset[disabled] .btn-theme:focus,
+.btn-theme.disabled:active,
+.btn-theme[disabled]:active,
+fieldset[disabled] .btn-theme:active,
+.btn-theme.disabled.active,
+.btn-theme[disabled].active,
+fieldset[disabled] .btn-theme.active {
+  background-color: #15967d;
+  border-color: #15967d;
+}
