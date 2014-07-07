@@ -43,7 +43,9 @@ var app = express();
  * Connect to MongoDB.
  */
 
-mongoose.connect(secrets.db);
+var mongodb  = (app.get('env') == 'development') ? 'mongodb://localhost:27017/devinbox' : secrets.db;
+
+mongoose.connect(mongodb);
 mongoose.connection.on('error', function() {
   console.error('MongoDB Connection Error. Make sure MongoDB is running.');
 });
@@ -79,7 +81,7 @@ app.use(cookieParser());
 app.use(session({
   secret: secrets.sessionSecret,
   store: new MongoStore({
-    url: secrets.db,
+    url: mongodb,
     auto_reconnect: true
   }),
   resave: true,

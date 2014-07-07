@@ -7,6 +7,8 @@ module.exports.setup = function (app) {
 
   app.get('/', HomeController.index);
 
+  app.get('/test', HomeController.test);
+
   app.post('/subscribe', subscriber.postSubscribe);
 
   app.get('/share', subscriber.getShare);
@@ -14,4 +16,6 @@ module.exports.setup = function (app) {
   app.post('/share', subscriber.postShare);
 
   app.get('/share/:token', subscriber.getShareToken);
+
+  app.post('/share/:token', subscriber.postProject);
 };

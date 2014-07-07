@@ -3,8 +3,8 @@ var async = require('async');
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
+var Project = require('../models/project');
 var secrets = require('../config/secrets');
-
 
 
 /**
@@ -43,8 +43,9 @@ exports.postShare = function(req, res, next) {
     function(token, done) {
       User.findOne({email: req.body.email}, function(err, user) {
         if (!user) {
-          req.flash('errors', { msg: 'That email address does not exists in our database, make sure you have subscribed first.' });
-          return res.redirect('/share');
+          user = new User();
+          user.email = req.body.email;
+          user.name = req.body.email.substring(0, req.body.email.indexOf('@'));
         }
 
         user.postToken = token;
@@ -63,6 +64,7 @@ exports.postShare = function(req, res, next) {
           pass: secrets.Gmail.password
         }
       });
+
       var mailOptions = {
         to: user.email,
         from: secrets.Gmail.user,
@@ -72,8 +74,9 @@ exports.postShare = function(req, res, next) {
           'If you did not request this, please ignore this email.\n\n\n' + 
           'DevInbox Team'
       };
+
       smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+        req.flash('info', { msg: 'An link has been sent to ' + user.email + '. Use it to share your project.' });
         done(err, 'done');
       });
     }
@@ -90,13 +93,32 @@ exports.postShare = function(req, res, next) {
  */
 exports.getShareToken = function(req, res) {
   var token  = req.params.token;
+  var categories = [
+    {name: 'Library'},
+    {name: 'Framework'},
+    {name: 'Web App'},
+    {name: 'Mobile App'},
+    {name: 'Software'},
+    {name: 'Boilerplate'},
+    {name: 'Productivity'}
+  ];
 
-  res.render('share', {
-    title: 'devInbox - share a new projects',
-    description: 'devInbox - share a new projects'
-  });
+  User.findOne({postToken: token})
+    .where('postTokenExpires').gt(Date.now())
+    .exec(function(err, user) {
+      if (!user) {
+        req.flash('errors', { msg: 'Token is invalid or has expired.' });
+        return res.redirect('/share');
+      }
+
+      res.render('share', {
+        title: 'devInbox - share a new projects',
+        description: 'devInbox - share a new projects',
+        token: token,
+        categories: categories
+      });
+    });
 };
-
 
 /**
  * POST /subscribe
@@ -106,7 +128,7 @@ exports.getShareToken = function(req, res) {
  */
 exports.postSubscribe = function(req, res, next) {
   req.assert('email', 'Email is not valid').isEmail();
-  req.assert('name', 'Namr must be at least 3 characters long').len(3);
+  req.assert('name', 'Name must be at least 3 characters long').len(3);
 
   var errors = req.validationErrors();
 
@@ -148,9 +170,14 @@ exports.postSubscribe = function(req, res, next) {
  * @param token
  */
 
-exports.postReset = function(req, res, next) {
-  req.assert('password', 'Password must be at least 4 characters long.').len(4);
-  req.assert('confirm', 'Passwords must match.').equals(req.body.password);
+exports.postProject = function(req, res, next) {
+  req.assert('title', 'Title must be at least 3 characters long').len(3);
+  req.assert('category', 'Category must be selected').notEmpty();
+  req.assert('title', 'Title must be at least 3 characters long').len(3);
+  req.assert('short_desc', 'Short description must be at least 12 characters and not exceed 100 characters').len(12, 100);
+  req.assert('desc', 'Description must be at least 32 characters long').len(32);
+  req.assert('tags', 'Technogies must not be empty').notEmpty();
+  req.assert('url', 'Project Url must not be empty').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -159,118 +186,74 @@ exports.postReset = function(req, res, next) {
     return res.redirect('back');
   }
 
+  var projectData = {
+    title: req.body.title,
+    category: req.body.category,
+    short_desc: req.body.short_desc,
+    desc: req.body.desc,
+    tags: req.body.tags.split(',').map(function(tag){ return tag.trim();}),
+    url: req.body.url,
+    code_url: req.body.code_url
+  };
+
+  var project;
+
   async.waterfall([
     function(done) {
       User
-        .findOne({ resetPasswordToken: req.params.token })
-        .where('resetPasswordExpires').gt(Date.now())
+        .findOne({ postToken: req.params.token })
+        .where('postTokenExpires').gt(Date.now())
         .exec(function(err, user) {
           if (!user) {
-            req.flash('errors', { msg: 'Password reset token is invalid or has expired.' });
+            req.flash('errors', { msg: 'Project post token is invalid or has expired.' });
             return res.redirect('back');
           }
 
-          user.password = req.body.password;
-          user.resetPasswordToken = undefined;
-          user.resetPasswordExpires = undefined;
+          user.twitter = req.body.author_twitter;
+          user.github = req.body.author_github;
+          user.website = req.body.author_website;
+          user.postToken = undefined;
+          user.postTokenExpires = undefined;
 
-          user.save(function(err) {
+          projectData.userId = user._id;
+          project = new Project(projectData);
+
+          project.save(function () {
             if (err) return next(err);
-            req.logIn(user, function(err) {
+
+            user.save(function(err) {
+              if (err) return next(err);
               done(err, user);
             });
+  
           });
         });
     },
     function(user, done) {
       var smtpTransport = nodemailer.createTransport('SMTP', {
-        service: 'SendGrid',
+        service: 'Gmail',
         auth: {
-          user: secrets.sendgrid.user,
-          pass: secrets.sendgrid.password
+          user: secrets.Gmail.user,
+          pass: secrets.Gmail.password
         }
       });
+
       var mailOptions = {
         to: user.email,
-        from: 'hackathon@starter.com',
-        subject: 'Your Hackathon Starter password has been changed',
-        text: 'Hello,\n\n' +
-          'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
+        from: secrets.Gmail.user,
+        subject: 'devInbox - You have shared a new project',
+        text: 'Hi ' + user.name + ', \n\n' +
+          'You have successfully shared a new project titled "' + project.title +'", responses will be sent to your inbox.\n\n\n' +
+          'DevInbox Team'
       };
+
       smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('success', { msg: 'Success! Your password has been changed.' });
-        done(err);
-      });
-    }
-  ], function(err) {
-    if (err) return next(err);
-    res.redirect('/');
-  });
-};
-
-
-/**
- * POST /forgot
- * Create a random token, then the send user an email with a reset link.
- * @param email
- */
-
-exports.postProject = function(req, res, next) {
-  req.assert('email', 'Please enter a valid email address.').isEmail();
-
-  var errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/forgot');
-  }
-
-  async.waterfall([
-    function(done) {
-      crypto.randomBytes(16, function(err, buf) {
-        var token = buf.toString('hex');
-        done(err, token);
-      });
-    },
-    function(token, done) {
-      User.findOne({ email: req.body.email.toLowerCase() }, function(err, user) {
-        if (!user) {
-          req.flash('errors', { msg: 'No account with that email address exists.' });
-          return res.redirect('/forgot');
-        }
-
-        user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-
-        user.save(function(err) {
-          done(err, token, user);
-        });
-      });
-    },
-    function(token, user, done) {
-      var smtpTransport = nodemailer.createTransport('SMTP', {
-        service: 'SendGrid',
-        auth: {
-          user: secrets.sendgrid.user,
-          pass: secrets.sendgrid.password
-        }
-      });
-      var mailOptions = {
-        to: user.email,
-        from: 'hackathon@starter.com',
-        subject: 'Reset your password on Hackathon Starter',
-        text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
-          'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-          'http://' + req.headers.host + '/reset/' + token + '\n\n' +
-          'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      };
-      smtpTransport.sendMail(mailOptions, function(err) {
-        req.flash('info', { msg: 'An e-mail has been sent to ' + user.email + ' with further instructions.' });
+        req.flash('info', { msg: 'Your project has been successfully shared.' });
         done(err, 'done');
       });
     }
   ], function(err) {
     if (err) return next(err);
-    res.redirect('/forgot');
+    res.redirect('/');
   });
 };

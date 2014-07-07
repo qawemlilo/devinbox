@@ -104,6 +104,9 @@ h1,h2,h3,h4,h5,h6{
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 }
+.panel-theme .panel-heading-share {
+	padding: 10px 0 10px 20px;
+}
 .panel-theme .panel-body{
 	padding: 20px 40px 10px;
 	text-align: left;

@@ -13,41 +13,130 @@
         <div class="row">             
           <div id="features">
             <div class="col-md-12 col-sm-12">
+              <form class="form-horizontal" role="form" action="/share/<%= token %>" method="post">
+              <input type="hidden" name="_csrf" value="<%= _csrf %>">
+
               <div class="panel panel-theme">
-                
-                <div class="panel-heading">Share a new project</div>
+                <div class="panel-heading panel-heading-share">Project Information</div>
 
                 <div class="panel-body">
-                  <form class="form-horizontal" role="form">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                      <label for="title" class="col-sm-3 control-label">
+                        Title <span class="text-danger">*</span>
+                      </label>
+
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required="">
                       </div>
                     </div>
+
                     <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                      <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="          Password">
+                      <label class="col-sm-3 control-label" for="category">
+                        Category <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="category" id="category" required="">
+                           <option>Select</option>
+                          <% categories.forEach(function (cat) { %>
+                            <option value="<%= cat.name %>"><%= cat.name %></option>
+                          <% }); %>
+                        </select>
                       </div>
                     </div>
+
                     <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox"> Remember me
-                          </label>
-                        </div>
+                      <label for="short_desc" class="col-sm-3 control-label">
+                        Short Description <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" rows="2" name="short_desc" id="short_desc" required="" size="100"></textarea>
+                        <p class="help-block">Short description will be used when sharing your project on twitter</p>
                       </div>
                     </div>
+
                     <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Sign in</button>
+                      <label for="desc" class="col-sm-3 control-label">
+                        Description <span class="text-danger">*</span>
+                      </label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" rows="4" name="desc" id="desc" required=""></textarea>
                       </div>
                     </div>
-                  </form>
+
+                    <div class="form-group">
+                      <label for="tags" class="col-sm-3 control-label">
+                        Technologies <span class="text-danger">*</span>
+                      </label>
+
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="tags" name="tags" placeholder="commas, seperated" required="">
+                        <p class="help-block">e.g, bootstrap, ruby on rails, nodejs, express, golang, </p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="url" class="col-sm-3 control-label">
+                        Project Url <span class="text-danger">*</span>
+                      </label>
+
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="url" name="url" placeholder="" required="">
+                        <p class="help-block"></p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="code_url" class="col-sm-3 control-label">
+                        Source Code Url
+                      </label>
+
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="code_url" name="code_url" placeholder="">
+                      </div>
+                    </div>
                 </div>
               </div>
+
+              <div class="panel panel-theme">
+                <div class="panel-heading panel-heading-share">Personal Information</div>
+
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="author_website" class="col-sm-3 control-label">
+                      Website / Blog
+                    </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="author_website" name="author_website" placeholder="">
+                      <p class="help-block">Member website or blog</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="author_twitter" class="col-sm-3 control-label">
+                      Twitter Handle
+                    </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="author_twitter" name="author_twitter" placeholder="">
+                      <p class="help-block">Member twitter handle</p>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="author_github" class="col-sm-3 control-label">
+                      Github Handle
+                    </label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="author_github" name="author_github" placeholder="">
+                      <p class="help-block">Member github handle</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-block btn-lg btn-theme">
+                Submit Project
+              </button>
+            </form>
             </div> 
           </div> 
         </div>
