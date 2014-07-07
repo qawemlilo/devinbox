@@ -43,7 +43,9 @@ var app = express();
  * Connect to MongoDB.
  */
 
-var mongodb  = (app.get('env') == 'development') ? 'mongodb://localhost:27017/devinbox' : secrets.db;
+//var mongodb  = (app.get('env') == 'development') ? 'mongodb://localhost:27017/devinbox' : secrets.db;
+
+var mongodb = secrets.db;
 
 mongoose.connect(mongodb);
 mongoose.connection.on('error', function() {
