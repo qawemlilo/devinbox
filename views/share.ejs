@@ -36,9 +36,9 @@
                       </label>
                       <div class="col-sm-9">
                         <select class="form-control" name="category" id="category" required="">
-                           <option>Select</option>
+                           <option value="">Select</option>
                           <% categories.forEach(function (cat) { %>
-                            <option value="<%= cat.name %>"><%= cat.name %></option>
+                            <option value="<%= cat.name %>" <% if(inputs && inputs.category == cat.name) { %>selected="selected"<% } %></option>
                           <% }); %>
                         </select>
                       </div>
