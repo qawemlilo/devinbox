@@ -99,9 +99,18 @@ exports.getShareToken = function(req, res) {
     {name: 'Web App'},
     {name: 'Mobile App'},
     {name: 'Software'},
+    {name: 'Content Management'},
     {name: 'Boilerplate'},
     {name: 'Productivity'}
   ];
+
+  var options = {
+    title: 'devInbox - share a new projects',
+    description: 'devInbox - share a new projects',
+    token: token,
+    categories: categories,
+    inputs: req.session.inputs
+  };
 
   User.findOne({postToken: token})
     .where('postTokenExpires').gt(Date.now())
@@ -111,12 +120,7 @@ exports.getShareToken = function(req, res) {
         return res.redirect('/share');
       }
 
-      res.render('share', {
-        title: 'devInbox - share a new projects',
-        description: 'devInbox - share a new projects',
-        token: token,
-        categories: categories
-      });
+      res.render('share', options);
     });
 };
 
@@ -181,11 +185,6 @@ exports.postProject = function(req, res, next) {
 
   var errors = req.validationErrors();
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('back');
-  }
-
   var projectData = {
     title: req.body.title,
     category: req.body.category,
@@ -195,6 +194,17 @@ exports.postProject = function(req, res, next) {
     url: req.body.url,
     code_url: req.body.code_url
   };
+
+  if (errors) {
+    projectData.author_github = req.body.author_github;
+    projectData.author_twitter = req.body.author_twitter;
+    projectData.author_website = req.body.author_website;
+
+    req.session.inputs = projectData;
+
+    req.flash('errors', errors);
+    return res.redirect('back');
+  }
 
   var project;
 

@@ -26,7 +26,7 @@
                       </label>
 
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required="">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="<% if (inputs) { %><%= inputs.title %><% } %>" required="">
                       </div>
                     </div>
 
@@ -49,7 +49,7 @@
                         Short Description <span class="text-danger">*</span>
                       </label>
                       <div class="col-sm-9">
-                        <textarea class="form-control" rows="2" name="short_desc" id="short_desc" required="" size="100"></textarea>
+                        <textarea class="form-control" rows="2" name="short_desc" id="short_desc" required="" size="100"><% if (inputs) { %><%= inputs.short_desc %><% } %></textarea>
                         <p class="help-block">Short description will be used when sharing your project on twitter</p>
                       </div>
                     </div>
@@ -59,7 +59,7 @@
                         Description <span class="text-danger">*</span>
                       </label>
                       <div class="col-sm-9">
-                        <textarea class="form-control" rows="4" name="desc" id="desc" required=""></textarea>
+                        <textarea class="form-control" rows="4" name="desc" id="desc" required=""><% if (inputs) { %><%= inputs.desc %><% } %></textarea>
                       </div>
                     </div>
 
@@ -69,7 +69,7 @@
                       </label>
 
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="tags" name="tags" placeholder="commas, seperated" required="">
+                        <input type="text" class="form-control" id="tags" name="tags" placeholder="commas, seperated" value="<% if (inputs) { %><%= inputs.tags %><% } %>" required="">
                         <p class="help-block">e.g, bootstrap, ruby on rails, nodejs, express, golang, </p>
                       </div>
                     </div>
@@ -80,7 +80,7 @@
                       </label>
 
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="url" name="url" placeholder="" required="">
+                        <input type="text" class="form-control" id="url" name="url" placeholder="" value="<% if (inputs) { %><%= inputs.url %><% } %>" required="">
                         <p class="help-block"></p>
                       </div>
                     </div>
@@ -91,7 +91,7 @@
                       </label>
 
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="code_url" name="code_url" placeholder="">
+                        <input type="text" class="form-control" id="code_url" name="code_url" value="<% if (inputs) { %><%= inputs.code_url %><% } %>" placeholder="">
                       </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                       Website / Blog
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="author_website" name="author_website" placeholder="">
+                      <input type="text" class="form-control" id="author_website" name="author_website" value="<% if (inputs) { %><%= inputs.author_website %><% } %>" placeholder="">
                       <p class="help-block">Member website or blog</p>
                     </div>
                   </div>
@@ -116,7 +116,7 @@
                       Twitter Handle
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="author_twitter" name="author_twitter" placeholder="">
+                      <input type="text" class="form-control" id="author_twitter" name="author_twitter" value="<% if (inputs) { %><%= inputs.author_twitter %><% } %>" placeholder="">
                       <p class="help-block">Member twitter handle</p>
                     </div>
                   </div>
@@ -126,7 +126,7 @@
                       Github Handle
                     </label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="author_github" name="author_github" placeholder="">
+                      <input type="text" class="form-control" id="author_github" name="author_github" value="<% if (inputs) { %><%= inputs.author_github %><% } %>" placeholder="">
                       <p class="help-block">Member github handle</p>
                     </div>
                   </div>
